@@ -8,7 +8,7 @@ drf-yasg>=1.21.7
 psycopg2-binary>=2.9.9
 
 # CUID Generation
-cuid>=0.3
+cuid>=0.4
 
 # Environment variables
 python-dotenv>=1.0.0
@@ -25,4 +25,4 @@ isort>=5.13.2
 flake8>=7.0.0
 
 # Image Processing
-Pillow>=10.1.0 
+Pillow==10.1.0 

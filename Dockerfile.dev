@@ -7,13 +7,20 @@ ENV PYTHONUNBUFFERED 1
 # Set work directory
 WORKDIR /app
 
-# Install system dependencies
+# Install system dependencies including ALL Pillow requirements
 RUN apt-get update && apt-get install -y \
     postgresql-client \
     netcat-traditional \
     python3-dev \
+    # Pillow dependencies
     libjpeg-dev \
     libpng-dev \
+    zlib1g-dev \
+    libfreetype6-dev \
+    liblcms2-dev \
+    libwebp-dev \
+    libopenjp2-7-dev \
+    build-essential \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Python dependencies
