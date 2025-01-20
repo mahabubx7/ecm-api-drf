@@ -3,7 +3,7 @@ from common.models import BaseModel
 
 class Category(BaseModel):
     name = models.CharField(max_length=100)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True, max_length=155)
     parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
     
     class Meta:
@@ -14,14 +14,15 @@ class Category(BaseModel):
         return self.name
 
 class Product(BaseModel):
-    name = models.CharField(max_length=200)
-    slug = models.SlugField(unique=True)
+    name = models.CharField(max_length=255)
+    slug = models.SlugField(unique=True, max_length=255)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     stock = models.IntegerField(default=0)
     is_active = models.BooleanField(default=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
-    image = models.ImageField(upload_to='products/', null=True, blank=True)
+    # image = models.ImageField(upload_to='products/', null=True, blank=True)
+    image = models.CharField(max_length=255, null=True, blank=True)
 
     class Meta:
         ordering = ['-created_at']

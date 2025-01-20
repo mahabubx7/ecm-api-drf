@@ -27,10 +27,16 @@ python manage.py makemigrations authentication
 echo "Applying migrations..."
 python manage.py migrate
 
+# Seed categories & products
+echo "Seeding categories & products..."
+# python manage.py runscript products.seeders.categories
+python manage.py seed_products
+
+
 # Create superuser if it doesn't exist
 echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(email='admin@example.com').exists() or User.objects.create_superuser('admin@example.com', 'admin')" | python manage.py shell
 
 # Collect static files
 python manage.py collectstatic --noinput
 
-exec "$@" 
+exec "$@"
